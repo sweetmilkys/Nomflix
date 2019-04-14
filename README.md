@@ -54,3 +54,19 @@ iOS / Android Movie Discovery App built with React Native.
   ```
   $ yarn add react-router-dom
   ```
+
+- styled-components
+
+  compatible with both React (for web) and React Native – meaning it's the perfect choice even for truly universal apps!
+
+  ```
+  $ yarn add styled-components
+  ```
+
+- styled-reset
+
+  Reset CSS for Styled Components
+
+  ```
+  $ yarn add styled-reset
+  ```
