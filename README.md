@@ -13,7 +13,7 @@ iOS / Android Movie Discovery App built with React Native.
   $ brew install node
   ```
 
-- Yarn
+- yarn
 
   Fast, reliable, and secure dependency management.
 
@@ -22,7 +22,7 @@ iOS / Android Movie Discovery App built with React Native.
   $ brew upgrade yarn
   ```
 
-- Npx
+- npx
 
   Execute npm package binaries
 
@@ -31,7 +31,7 @@ iOS / Android Movie Discovery App built with React Native.
   $ npm i npx -g
   ```
 
-- Create-react-app
+- create-react-app
 
   Set up a modern web app by running one command.
 
@@ -39,10 +39,18 @@ iOS / Android Movie Discovery App built with React Native.
   $ npx create-react-app nomflix
   ```
 
-- Prop-types
+- prop-types
 
   Runtime type checking for React props and similar objects.
 
   ```
   $ yarn add prop-types
+  ```
+
+- react-router-dom
+
+  DOM bindings for React Router.
+
+  ```
+  $ yarn add react-router-dom
   ```
