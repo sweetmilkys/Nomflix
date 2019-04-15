@@ -70,3 +70,17 @@ iOS / Android Movie Discovery App built with React Native.
   ```
   $ yarn add styled-reset
   ```
+
+  - the movie db
+
+    community built movie and TV database.
+
+    Link:https://www.themoviedb.org/
+
+Axios
+
+Promise based HTTP client for the browser and node.js
+
+```
+$ yarn add axios
+```
