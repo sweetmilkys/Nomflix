@@ -4,9 +4,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const api = axios.create({
-  baseURL: process.THEMOVIEDB_API_URL,
+  baseURL: process.env.THEMOVIEDB_API_URL,
   params: {
-    api_key: process.THEMOVIEDB_API_KEY,
+    api_key: process.env.THEMOVIEDB_API_KEY,
     language: "en-US"
   }
 });
@@ -26,7 +26,7 @@ export const movieApi = {
 };
 
 export const tvApi = {
-  topRated: () => api.get("tv.top_rated"),
+  topRated: () => api.get("tv/top_rated"),
   popular: () => api.get("tv/popular"),
   airingToday: () => api.get("tv/airing_today"),
   tvDetail: id =>
