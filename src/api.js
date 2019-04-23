@@ -4,15 +4,15 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const api = axios.create({
-  baseURL: process.env.THEMOVIEDB_API_URL,
+  baseURL: process.env.REACT_APP_THEMOVIEDB_API_URL,
   params: {
-    api_key: process.env.THEMOVIEDB_API_KEY,
+    api_key: process.env.REACT_APP_THEMOVIEDB_API_KEY,
     language: "en-US"
   }
 });
 
 export const movieApi = {
-  nowPlaying: () => api.get("movie/now_palying"),
+  nowPlaying: () => api.get("movie/now_playing"),
   upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
   movieDetail: id =>
