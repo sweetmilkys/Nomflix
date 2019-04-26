@@ -77,10 +77,18 @@ iOS / Android Movie Discovery App built with React Native.
 
     Link:https://www.themoviedb.org/
 
-Axios
+- axios
 
 Promise based HTTP client for the browser and node.js
 
 ```
 $ yarn add axios
 ```
+
+- dotenv
+
+  Loads environment variables from .env for nodejs projects.
+
+  ```
+  $ npm install dotenv
+  ```
