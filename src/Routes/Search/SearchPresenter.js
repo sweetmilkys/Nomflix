@@ -5,6 +5,7 @@ import Loader from "Components/Loader";
 import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "../../Components/Poster";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
   padding: 20px;
@@ -31,17 +32,20 @@ const SearchPresenter = ({
   error
 }) => (
   <Container>
-    <Form onSubmit={handleSubmit}>
-      <Input
-        placeholder="Search Movies or TV Shows..."
-        value={searchTerm}
-        onChange={updateTerm}
-      />
-    </Form>
     {loading ? (
       <Loader />
     ) : (
       <>
+        <Helmet>
+          <title>Search | Nomflix</title>
+        </Helmet>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            placeholder="Search Movies or TV Shows..."
+            value={searchTerm}
+            onChange={updateTerm}
+          />
+        </Form>
         {movieResults && movieResults.length > 0 && (
           <Section title="Movie Results">
             {movieResults.map(movie => (

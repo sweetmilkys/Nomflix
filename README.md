@@ -90,5 +90,13 @@ $ yarn add axios
   Loads environment variables from .env for nodejs projects.
 
   ```
-  $ npm install dotenv
+  $ yarn add dotenv
+  ```
+
+- Helmet
+
+  A document head manager for React
+
+  ```
+  $ yarn add react-helmet
   ```
