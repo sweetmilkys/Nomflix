@@ -2,7 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
+import Message from "Components/Message";
 import Helmet from "react-helmet";
+import Section from "Components/Section";
+import Poster from "Components/Poster";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -31,6 +34,7 @@ const Content = styled.div`
   position: relative;
   z-index: 1;
   height: 100%;
+  margin-bottom: 30px;
 `;
 
 const Cover = styled.div`
@@ -52,23 +56,41 @@ const Title = styled.h3`
 `;
 
 const ItemContainer = styled.div`
-  margin: 20px 0;
+  margin: 10px 0px;
 `;
 
 const Item = styled.span``;
 
 const Divider = styled.span`
-  margin: 0 10px;
+  margin: 10px;
+`;
+
+const VideoContainer = styled.div`
+  padding-top: 56.25%;
+  position: relative;
+`;
+
+const Video = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const Overview = styled.p`
   font-size: 12px;
   opacity: 0.7;
   line-height: 1.5;
-  width: 50%;
+  margin-bottom: 10px;
 `;
 
-const DetailPresenter = ({ result, loading, error }) =>
+const Recomend = styled.div`
+  margin-bottom: 50px;
+  padding-top: 25px;
+`;
+
+const DetailPresenter = ({ loading, error, result, isMovie, recommendation }) =>
   loading ? (
     <Loader />
   ) : (
@@ -91,11 +113,7 @@ const DetailPresenter = ({ result, loading, error }) =>
           }
         />
         <Data>
-          <Title>
-            {result.original_title
-              ? result.original_title
-              : result.original_name}
-          </Title>
+          <Title>{result.title ? result.title : result.name}</Title>
           <ItemContainer>
             <Item>
               {result.release_date
@@ -133,8 +151,44 @@ const DetailPresenter = ({ result, loading, error }) =>
             </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+          <VideoContainer>
+            {result.videos.results.length > 0 ? (
+              <Video
+                key={result.videos.results[0].id}
+                src={`http://www.youtube.com/embed/${
+                  result.videos.results[0].key
+                }`}
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+            ) : (
+              ""
+            )}
+          </VideoContainer>
         </Data>
       </Content>
+      <Recomend>
+        {recommendation && recommendation.length > 0 && (
+          <Section title="Recommendations">
+            {recommendation.map((item, index) =>
+              index < 6 ? (
+                <Poster
+                  key={item.id}
+                  id={item.id}
+                  imageUrl={item.poster_path}
+                  title={isMovie ? item.title : item.name}
+                  rating={item.vote_average}
+                  isMovie={isMovie}
+                />
+              ) : (
+                ""
+              )
+            )}
+          </Section>
+        )}
+      </Recomend>
+      {error && <Message color="#e74c3c" text={error} />}
     </Container>
   );
 

@@ -7,7 +7,7 @@ const api = axios.create({
   baseURL: process.env.REACT_APP_THEMOVIEDB_API_URL,
   params: {
     api_key: process.env.REACT_APP_THEMOVIEDB_API_KEY,
-    language: "en-US"
+    language: "ko"
   }
 });
 
@@ -17,10 +17,11 @@ export const movieApi = {
   popular: () => api.get("movie/popular"),
   movieDetail: id =>
     api.get(`movie/${id}`, { params: { append_to_response: "videos" } }),
+  recommendation: id => api.get(`movie/${id}/recommendations`),
   search: term =>
     api.get("search/movie", {
       params: {
-        query: encodeURIComponent(term)
+        query: term
       }
     })
 };
@@ -30,11 +31,12 @@ export const tvApi = {
   popular: () => api.get("tv/popular"),
   airingToday: () => api.get("tv/airing_today"),
   tvDetail: id =>
-    api.get(`tv${id}`, { params: { append_to_response: "videos" } }),
+    api.get(`tv/${id}`, { params: { append_to_response: "videos" } }),
+  recommendation: id => api.get(`tv/${id}/recommendations`),
   search: term =>
     api.get("search/tv", {
       params: {
-        query: encodeURIComponent(term)
+        query: term
       }
     })
 };
